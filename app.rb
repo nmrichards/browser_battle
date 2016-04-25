@@ -7,7 +7,7 @@ get '/' do
 end
 
 get '/secret' do
-  'This is susspposed to be secret! Go away!'
+  'This is supposed to be secret! Go away!'
 end
 
 get '/cat' do
