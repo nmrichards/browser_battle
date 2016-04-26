@@ -10,7 +10,13 @@ get '/secret' do
   'This is supposed to be secret! Go away!'
 end
 
-get '/cat' do
+get '/random-cat' do
   @name = %w(Amigo Viking Oscar).sample
+  erb(:index)
+end
+
+get '/named-cat' do
+  p params
+  @name = params[:name]
   erb(:index)
 end
