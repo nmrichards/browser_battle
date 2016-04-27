@@ -1,13 +1,14 @@
-<% if @name %>
-<h1>  My name is <%= @name %> </h1>
-<% end %>
-<% if !@name %>
-<form action="/named-cat">
-    Your Name: <input type="text" name="name">
-    <br/>
-    <input type="submit" value="Submit">
+<h1> Battle! </h1>
+<h2> Sign in to play</h2>
+<form action="/names" method="post">
+  <label for="player_1">
+    Player 1:
+    <input type="text" name="player_1">
+  </label>
+  <label for="player-2">
+    Player 2:
+    <input type="text" name="player_2">
+  </label>
+  <br/>
+  <input type="submit" value="Submit">
 </form>
-<% end %>
-<div style='border: 3px dashed red'>
-  <img src='http://bit.ly/1eze8aE'>
-</div>

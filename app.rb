@@ -1,22 +1,17 @@
-require 'sinatra'
+require 'sinatra/base'
 
-set :session_secret, 'super secret'
+class Battle < Sinatra::Base
 
-get '/' do
-  'Hello!'' ''Hej!'
-end
+  get '/' do
+    erb(:index)
+  end
 
-get '/secret' do
-  'This is supposed to be secret! Go away!'
-end
+  post '/names' do
+    @player_1 = params[:player_1]
+    @player_2 = params[:player_2]
+    erb(:play)
+  end
 
-get '/random-cat' do
-  @name = %w(Amigo Viking Oscar).sample
-  erb(:index)
-end
-
-get '/named-cat' do
-  p params
-  @name = params[:name]
-  erb(:index)
+  # start the server if ruby file executed directly
+  run! if app_file == $0
 end
