@@ -1,33 +1,50 @@
 require 'sinatra/base'
-require_relative 'lib/player'
-require_relative 'lib/game'
+require './lib/player'
+require './lib/game'
+
 
 class Battle < Sinatra::Base
 
-  enable :sessions
+enable :sessions
+
+  before do
+    @game = Game.instance
+  end
 
   get '/' do
     erb(:index)
   end
 
   post '/names' do
-    $game = Game.new(Player.new(params[:name1]), Player.new(params[:name2]))
-    redirect '/play'
+    player1 = Player.new(params[:player_1_name])
+    player2 = Player.new(params[:player_2_name])
+    @game = Game.create(player1, player2)
+    redirect ('/play')
   end
 
   get '/play' do
-    @game = $game
-    @game.change_turn
+    @game.switch
     erb(:play)
   end
 
-  get '/attack' do
-    @game = $game
-    @game.hit(@game.opponent)
-    erb(:attack)
+  get '/game_over' do
+    erb(:game_over)
   end
 
-  #start the server if ruby file executed directly
-  run! if app_file == $0
+  get '/healed' do
+    @game.healed
+    erb(:heal)
+  end
 
+  get '/attack' do
+    @game.attack(params[:choice])
+    if @game.loser_player
+      erb(:game_over)
+    else
+      erb(:attack)
+    end
+  end
+
+  # start the server if ruby file executed directly
+  run! if app_file == $0
 end

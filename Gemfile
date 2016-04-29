@@ -1,8 +1,8 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-gem 'capybara'
-gem 'rspec-sinatra'
+# gem "rails"
 gem 'sinatra'
-gem 'shotgun'
+gem 'rspec-sinatra'
+gem 'capybara'
 gem 'rspec'
