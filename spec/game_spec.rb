@@ -45,4 +45,11 @@ let(:opponent) { double :opponent }
     end
   end
 
+  context '#healed' do
+    it "heals current player" do
+      expect(player2).to receive(:healed)
+      game.healed
+    end
+  end
+
 end

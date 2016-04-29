@@ -35,6 +35,10 @@ class Game
     Kernel.rand(50).odd? ? switch : nil
   end
 
+  def healed
+    @current_player.healed
+  end
+
   def check_loser
     if @player1.hp <= 0
       @loser_player = @player1

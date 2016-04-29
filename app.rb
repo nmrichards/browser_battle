@@ -31,6 +31,11 @@ enable :sessions
     erb(:game_over)
   end
 
+  get '/healed' do
+    @game.healed
+    erb(:heal)
+  end
+
   get '/attack' do
     @game.attack(params[:choice])
     if @game.loser_player

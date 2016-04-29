@@ -12,4 +12,8 @@ describe Player do
     expect{ player.receive_attack }.to change{player.hp}.by -10
   end
 
+  it "on attack, reduces player2's HP" do
+    expect{ player.healed }.to change{player.hp}.by 10
+  end
+
 end

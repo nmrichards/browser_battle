@@ -13,4 +13,8 @@ class Player
     @hp -= damage
   end
 
+  def healed
+    @hp += 10
+  end
+
 end
