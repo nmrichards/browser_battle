@@ -6,8 +6,8 @@ class Game
   def initialize(player1, player2)
     @player1 = player1
     @player2 = player2
-    @current_player = player1
-    @opponent = player2
+    @current_player = player2
+    @opponent = player1
   end
 
   def self.create(player1, player2)
@@ -18,13 +18,21 @@ class Game
     @game
   end
 
-  def attack(player)
-    player.receive_attack
+  def attack(attack)
+    if attack == "paralyzed"
+      paralyze
+    else
+      @opponent.receive_attack(damage = Kernel.rand(1..10))
+    end
     check_loser
   end
 
   def switch
-    (@current_player, @opponent = @opponent, @current_player) unless @player1.hp == Player::HP && player2.hp == Player::HP
+    (@current_player, @opponent = @opponent, @current_player)
+  end
+
+  def paralyze
+    Kernel.rand(50).odd? ? switch : nil
   end
 
   def check_loser

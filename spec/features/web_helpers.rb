@@ -7,10 +7,10 @@ end
 
 def losing_game
   sign_in_and_play
-  19.times do
-    click_button("Attack Max")
-    click_button("Continue Fighting!")
-    click_button("Attack Sergio")
-    click_button("Continue Fighting!")
+  9.times do
+    click_button("Attack Max with a knife")
+    click_button("OK")
+    click_button("Attack Sergio with a knife")
+    click_button("OK")
   end
 end

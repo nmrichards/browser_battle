@@ -1,7 +1,22 @@
-<%= @game.player1.name %> vs <%= @game.player2.name %> FIGHT!
-<p> <%=@game.player1.name%> Hit points: <%= @game.player1.hp %> </p>
-<p> <%=@game.player2.name%> Hit points: <%= @game.player2.hp %> </p>
+<center>
+<h1>The Battlefield
+<br>
+<%= @game.player1.name %> vs. <%= @game.player2.name %>
+</h1>
+<h2>
+<%= @game.current_player.name%>'s turn
+</h2>
+<font size = 3>
+<%= "#{@game.opponent.name}'s hit points: #{@game.opponent.hp} " %>
+<%= " #{@game.current_player.name}'s hit points: #{@game.current_player.hp}" %>
+</font>
+</center>
+<form action="/attack">
 
-<form action="/attack" method="get">
-<input type="submit" value="Attack <%=@game.opponent.name%>">
+Attacks: <br>
+
+<button name="choice"type="submit" value="knifed">Attack <%=@game.opponent.name%> with a knife</button>
+<button name="choice"type="submit" value="shot">Attack <%=@game.opponent.name%> with a gun</button>
+<button name="choice"type="submit" value="bombed">Attack <%=@game.opponent.name%> with an airstrike</button>
+<button name="choice"type="submit" value="paralyzed">Paralyze <%=@game.opponent.name%></button>
 </form>

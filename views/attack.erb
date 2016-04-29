@@ -1,4 +1,7 @@
-<%= @game.current_player.name %> successfully attacked <%= @game.opponent.name %>
-<form action="/play" method="get">
-    <input type= "submit" value= "Continue Fighting!" >
+<%= "#{@game.current_player.name} #{params[:choice]} #{@game.opponent.name}" %>
+<br>
+<%= "#{@game.opponent.name}'s hit points are now: #{@game.opponent.hp}" %>
+<br>
+<form action='/play'>
+  <input type='submit' value='OK'>
 </form>
